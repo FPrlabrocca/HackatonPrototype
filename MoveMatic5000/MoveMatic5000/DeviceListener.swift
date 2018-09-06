@@ -15,13 +15,13 @@ protocol DeviceListenerDelegate: class {
 
 class DeviceListener: NSObject {
 
+    var server: DefaultHTTPServer!
+    var loop: SelectorEventLoop!
+    
     weak var delegate: DeviceListenerDelegate?
     
     
     func start() {
-        
-        let server: DefaultHTTPServer
-        let loop: SelectorEventLoop
         
         loop = try! SelectorEventLoop(selector: try! KqueueSelector())
         server = DefaultHTTPServer(eventLoop: loop, interface: "0.0.0.0", port: 8080) {
@@ -36,7 +36,9 @@ class DeviceListener: NSObject {
             
             if pathInfo.lowercased().starts(with: "/lift/") {
                 if let id = Int(pathInfo.split(separator: "/").last!) {
-                    self.delegate?.deviceListener(self, didReceiveLiftEventFromDevice: id)
+                    DispatchQueue.main.async {
+                        self.delegate?.deviceListener(self, didReceiveLiftEventFromDevice: id)
+                    }
                     sendBody(Data("Got it: device \(id) lifted".utf8))
                 } else {
                     sendBody(Data("Invalid device id".utf8))
@@ -54,7 +56,7 @@ class DeviceListener: NSObject {
         
         DispatchQueue.global().async {
             // Run event loop
-            loop.runForever()
+            self.loop.runForever()
         }
     }
 
