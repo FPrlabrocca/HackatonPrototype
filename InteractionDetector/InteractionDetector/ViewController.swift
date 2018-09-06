@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreMotion
-import SocketIO
 
 class ViewController: UIViewController {
     
@@ -19,7 +18,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        startAccelerometers()
+        //startAccelerometers()
+        sendMessage(id: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,10 +54,12 @@ class ViewController: UIViewController {
     }
     
     func sendMessage(id: Int) {
-        let manager = SocketManager(socketURL: URL(string: "http://10.10.1.120:8080")!, config: [.log(true)])
-        let socket = manager.defaultSocket
-        socket.connect()
-        socket.emit("productLifted", ["id":1])
+        let sessionWithoutADelegate = URLSession(configuration: URLSessionConfiguration.default)
+        if let url = URL(string: "http://localhost:8080/lift/1") {
+            (sessionWithoutADelegate.dataTask(with: url) { (data, response, error) in
+              
+            }).resume()
+        }
     }
 
 }

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "307D22EAC551F837026A27EC9A8A7C8C"
+               BlueprintIdentifier = "33533A51FE5BF4BC92D9246F03E27EB4"
                BuildableName = "Pods_InteractionDetector.framework"
                BlueprintName = "Pods-InteractionDetector"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "307D22EAC551F837026A27EC9A8A7C8C"
+            BlueprintIdentifier = "33533A51FE5BF4BC92D9246F03E27EB4"
             BuildableName = "Pods_InteractionDetector.framework"
             BlueprintName = "Pods-InteractionDetector"
             ReferencedContainer = "container:Pods.xcodeproj">

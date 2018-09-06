@@ -8,7 +8,9 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, DeviceListenerDelegate {
+    
+    let deviceListener = DeviceListener()
     
     @IBOutlet weak var backgroundImage: NSImageCell!
     override func viewDidLoad() {
@@ -16,6 +18,8 @@ class ViewController: NSViewController {
         
         // Do any additional setup after loading the view.
         sendImageToAzure()
+        
+        startListeningForEvents()
     }
     
     override var representedObject: Any? {
@@ -81,6 +85,17 @@ class ViewController: NSViewController {
     
     func httpBody() -> String {
         return ""
+    }
+    
+    func startListeningForEvents() {
+        deviceListener.delegate = self
+        deviceListener.start()
+    }
+    
+    //MARK: DeviceListenerDelegate
+    
+    func deviceListener(_ : DeviceListener, didReceiveLiftEventFromDevice id: Int) {
+        
     }
     
 }

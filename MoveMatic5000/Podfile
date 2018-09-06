@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'MoveMatic5000' do
+  pod 'Embassy', '~> 4.0'
+end

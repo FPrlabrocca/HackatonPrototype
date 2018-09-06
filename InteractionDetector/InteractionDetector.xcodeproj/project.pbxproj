@@ -99,7 +99,6 @@
 				8E3C5522214181BE00554266 /* Sources */,
 				8E3C5523214181BE00554266 /* Frameworks */,
 				8E3C5524214181BE00554266 /* Resources */,
-				5D1BCD200F4AD4331E91A714 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,26 +156,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5D1BCD200F4AD4331E91A714 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-InteractionDetector/Pods-InteractionDetector-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InteractionDetector/Pods-InteractionDetector-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		66BF781F03097C3626F6FFE9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

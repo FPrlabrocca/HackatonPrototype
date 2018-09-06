@@ -1,0 +1,16 @@
+PODS:
+  - Embassy (4.0.7)
+
+DEPENDENCIES:
+  - Embassy (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Embassy
+
+SPEC CHECKSUMS:
+  Embassy: 53ca7c2dd4c7f64956ddd4f5ef0443cec6383dd1
+
+PODFILE CHECKSUM: a5420b29ddb0d0870cc3c73a7f97a54aacc866c4
+
+COCOAPODS: 1.5.0
