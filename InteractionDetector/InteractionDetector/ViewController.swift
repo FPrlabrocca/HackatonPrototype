@@ -13,13 +13,15 @@ class ViewController: UIViewController {
     
     let motion = CMMotionManager()
     var timer: Timer?
+    
+    var lastEventDate = Date.distantPast
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //startAccelerometers()
-        sendMessage(id: 1)
+        startAccelerometers()
+       // sendMessage(id: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,8 +43,12 @@ class ViewController: UIViewController {
                                     let z = data.acceleration.z
                                     // print("--->\(z)")
                                     if z > -0.5 {
-                                        print("Lefted! ")
-                                        self.sendMessage(id: 1)
+                                        if Date().timeIntervalSince(self.lastEventDate) > 5.0 {
+                                            print("Lefted! ")
+                                            self.sendMessage(id: 1)
+                                            self.lastEventDate = Date()
+                                        }
+                                        
                                     }
                                     // Use the accelerometer data in your app.
                                 }
