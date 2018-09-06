@@ -10,6 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
     
+    @IBOutlet weak var backgroundImage: NSImageCell!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +22,12 @@ class ViewController: NSViewController {
         didSet {
             // Update the view, if already loaded.
         }
+    }
+    
+    func displayImage(product : String, scenario : String) {
+        let imageName = product + "_" + scenario
+        let image : NSImage = NSImage(byReferencingFile: imageName)!
+        backgroundImage.image = image
     }
     
     
