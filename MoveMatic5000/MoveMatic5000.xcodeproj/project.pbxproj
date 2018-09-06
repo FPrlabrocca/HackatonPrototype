@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E3C553C2141B16200554266 /* DeviceListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C553B2141B16200554266 /* DeviceListener.swift */; };
+		8E3C553E2141CE5D00554266 /* PictureCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C553D2141CE5D00554266 /* PictureCapturer.swift */; };
 		B77495DC9FE914D96CBDC6CB /* Pods_MoveMatic5000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE995D3304DC4E476E61C70F /* Pods_MoveMatic5000.framework */; };
 		E1C05DDC2141841E00A16220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C05DDB2141841E00A16220 /* AppDelegate.swift */; };
 		E1C05DDE2141841E00A16220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C05DDD2141841E00A16220 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		3788F80E2FC23DBAE1B45C0F /* Pods-MoveMatic5000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoveMatic5000.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoveMatic5000/Pods-MoveMatic5000.debug.xcconfig"; sourceTree = "<group>"; };
 		8E3C553B2141B16200554266 /* DeviceListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListener.swift; sourceTree = "<group>"; };
+		8E3C553D2141CE5D00554266 /* PictureCapturer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCapturer.swift; sourceTree = "<group>"; };
 		CE995D3304DC4E476E61C70F /* Pods_MoveMatic5000.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoveMatic5000.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C05DD82141841E00A16220 /* MoveMatic5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveMatic5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C05DDB2141841E00A16220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				E1C05DE42141841F00A16220 /* Info.plist */,
 				E1C05DE52141841F00A16220 /* MoveMatic5000.entitlements */,
 				8E3C553B2141B16200554266 /* DeviceListener.swift */,
+				8E3C553D2141CE5D00554266 /* PictureCapturer.swift */,
 			);
 			path = MoveMatic5000;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				8E3C553C2141B16200554266 /* DeviceListener.swift in Sources */,
 				E1C05DDE2141841E00A16220 /* ViewController.swift in Sources */,
+				8E3C553E2141CE5D00554266 /* PictureCapturer.swift in Sources */,
 				E1C05DDC2141841E00A16220 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

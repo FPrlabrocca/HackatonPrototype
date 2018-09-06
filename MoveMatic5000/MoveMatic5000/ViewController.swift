@@ -11,8 +11,12 @@ import Cocoa
 class ViewController: NSViewController, DeviceListenerDelegate {
     
     let deviceListener = DeviceListener()
+    let pictureCapturer = PictureCapturer()
     
     @IBOutlet weak var backgroundImage: NSImageCell!
+    @IBOutlet weak var capturedImage: NSImageView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +24,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         sendImageToAzure()
         
         startListeningForEvents()
+        
+        pictureCapturer.startCapture()
     }
     
     override var representedObject: Any? {
@@ -95,7 +101,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     //MARK: DeviceListenerDelegate
     
     func deviceListener(_ : DeviceListener, didReceiveLiftEventFromDevice id: Int) {
-        
+        capturedImage.image = pictureCapturer.lastCapturedImage
     }
     
 }
