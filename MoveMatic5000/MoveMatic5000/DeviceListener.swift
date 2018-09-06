@@ -49,11 +49,13 @@ class DeviceListener: NSObject {
             sendBody(Data())
         }
         
-        // Start HTTP server to listen on the port
-        try! server.start()
-        
-        // Run event loop
-        loop.runForever()
+        DispatchQueue.main.async {
+            // Start HTTP server to listen on the port
+            try! server.start()
+            
+            // Run event loop
+            loop.runForever()
+        }
     }
 
 }
