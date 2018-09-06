@@ -66,7 +66,7 @@ class ViewController: NSViewController {
     }
     
     func base64ImageRepresentation(imageData : NSData) -> String {
-        //Now use image to create into NSData format
+        //Now use image to create into NSData format    
         //let imageData:NSData = UIImagePNGRepresentation(image)!
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
         return strBase64
