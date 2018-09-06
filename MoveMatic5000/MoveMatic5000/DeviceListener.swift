@@ -24,7 +24,7 @@ class DeviceListener: NSObject {
         let loop: SelectorEventLoop
         
         loop = try! SelectorEventLoop(selector: try! KqueueSelector())
-        server = DefaultHTTPServer(eventLoop: loop, port: 8080) {
+        server = DefaultHTTPServer(eventLoop: loop, interface: "0.0.0.0", port: 8080) {
             (
             environ: [String: Any],
             startResponse: ((String, [(String, String)]) -> Void),

@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     
     func sendMessage(id: Int) {
         let sessionWithoutADelegate = URLSession(configuration: URLSessionConfiguration.default)
-        if let url = URL(string: "http://localhost:8080/lift/1") {
+        if let url = URL(string: "http://raffaeles-MacBook-Pro.local:8080/lift/1") {
             (sessionWithoutADelegate.dataTask(with: url) { (data, response, error) in
               
             }).resume()
