@@ -86,11 +86,19 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     
     func parseResponse(data : Data) {
         do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]
             
-            // Logic to figure out what to do here
+            let faceAttributes =  (json[0] as! [String: Any])["faceAttributes"]  as! [String: Any]
+            let emotion = faceAttributes["emotion"] as! [String: Double]
             
-            trackInteraction(happy: false, sad: false, surprised: false)
+            let threashold = 0.5
+            
+            let happy = emotion["happiness"]! > threashold
+            let sad = emotion["sadness"]! > threashold
+            let neutral = emotion["neutral"]! > threashold
+            let surprised = emotion["surprise"]! > threashold
+            
+            trackInteraction(happy: happy, sad: sad, surprised: surprised)
             
             print(json)
         } catch let error as NSError {
