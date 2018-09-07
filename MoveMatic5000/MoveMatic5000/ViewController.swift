@@ -111,6 +111,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]
             
+            guard json.count > 0 else {return}
+            
             guard let faceAttributes =  (json[0] as! [String: Any])["faceAttributes"]  as? [String: Any] else {return}
             guard let emotion = faceAttributes["emotion"] as? [String: Double] else {return}
             
@@ -121,7 +123,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             let neutral = emotion["neutral"]! > threashold
             let surprised = emotion["surprise"]! > threashold
             
-            trackInteraction(happy: happy, sad: sad, surprised: surprised)
+            trackInteraction(happy: happy || neutral, sad: sad, surprised: surprised)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if happy {
