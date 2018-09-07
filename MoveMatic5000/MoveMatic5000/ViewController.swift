@@ -39,6 +39,11 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     }
     
     func displayImage(scenario : String?) {
+        
+        if currentProduct != 0 {
+             playNotificationSound()
+        }
+        
         var imageName = "product\(currentProduct)"
         
         if scenario != nil {
@@ -63,6 +68,10 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         }
         
         backgroundImage.layer?.backgroundColor = color
+    }
+    
+    func playNotificationSound() {
+        NSSound(named: NSSound.Name("ding"))?.play()
     }
     
     func writeAnalytics() {
