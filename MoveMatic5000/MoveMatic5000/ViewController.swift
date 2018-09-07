@@ -61,7 +61,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         let defaultSession = URLSession(configuration: defaultSessionConfiguration)
         
         // Setup the request with URL
-        let url = URL(string: "https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect")!
+        let url = URL(string: "https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion")!
         var urlRequest = URLRequest(url: url)
         
         // Convert POST string parameters to data using UTF8 Encoding
