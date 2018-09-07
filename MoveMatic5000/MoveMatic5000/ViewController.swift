@@ -109,8 +109,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]
             
-            let faceAttributes =  (json[0] as! [String: Any])["faceAttributes"]  as! [String: Any]
-            let emotion = faceAttributes["emotion"] as! [String: Double]
+            guard let faceAttributes =  (json[0] as! [String: Any])["faceAttributes"]  as? [String: Any] else {return}
+            guard let emotion = faceAttributes["emotion"] as? [String: Double] else {return}
             
             let threashold = 0.5
             
@@ -121,7 +121,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             
             trackInteraction(happy: happy, sad: sad, surprised: surprised, neutral: neutral)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if happy {
                     self.displayImage(scenario: "happy")
                 } else if sad {
