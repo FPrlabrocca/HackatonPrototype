@@ -49,7 +49,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         var imageName = "product\(currentProduct)"
         
         if scenario != nil {
-            imageName.append(scenario!)
+            imageName.append("_\(scenario!)")
         }
         
         let image : NSImage = NSImage(named: NSImage.Name(imageName))!
@@ -127,6 +127,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
                     self.displayImage(scenario: "sad")
                 } else if surprised{
                     self.displayImage(scenario: "surprised")
+                } else if neutral{
+                    self.displayImage(scenario: "neutral")
                 } else {
                 }
             }
