@@ -60,8 +60,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         var urlRequest = URLRequest(url: url)
         
         // Convert POST string parameters to data using UTF8 Encoding
-        //imageToSend.
-        let postData = httpBody().data(using: .utf8)
+        let postData = imageToSend.tiffRepresentation
         
         // Set the httpMethod and assign httpBody
         urlRequest.httpMethod = "POST"
