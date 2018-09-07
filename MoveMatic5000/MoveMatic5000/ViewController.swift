@@ -13,7 +13,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     let deviceListener = DeviceListener()
     let pictureCapturer = PictureCapturer()
     
-    @IBOutlet weak var backgroundImage: NSImageCell!
+    @IBOutlet weak var backgroundImage: NSImageView!
     @IBOutlet weak var capturedImage: NSImageView!
 
     
@@ -28,6 +28,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         startListeningForEvents()
         
         pictureCapturer.startCapture()
+        
+        displayImage(scenario: nil)
     }
     
     override var representedObject: Any? {
@@ -36,10 +38,31 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         }
     }
     
-    func displayImage(product : String, scenario : String) {
-        let imageName = product + "_" + scenario
+    func displayImage(scenario : String?) {
+        var imageName = "product\(currentProduct)"
+        
+        if scenario != nil {
+            imageName.append(scenario!)
+        }
+        
         let image : NSImage = NSImage(byReferencingFile: imageName)!
         backgroundImage.image = image
+        
+        let color : CGColor
+    
+        
+        switch currentProduct {
+        case 1:
+            color =  CGColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)
+        case 2:
+            color =  CGColor(red: 0.0, green: 1.0, blue: 0, alpha: 1.0)
+        case 3:
+            color =  CGColor(red: 0.0, green: 0, blue: 1.0, alpha: 1.0)
+        default:
+            color = CGColor(red: 0.0, green: 0, blue: 0.0, alpha: 1.0)
+        }
+        
+        backgroundImage.layer?.backgroundColor = color
     }
     
     func writeAnalytics() {
@@ -98,10 +121,22 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             
             let happy = emotion["happiness"]! > threashold
             let sad = emotion["sadness"]! > threashold
-            let neutral = emotion["neutral"]! > threashold
+            //let neutral = emotion["neutral"]! > threashold
             let surprised = emotion["surprise"]! > threashold
             
             trackInteraction(happy: happy, sad: sad, surprised: surprised)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                if happy {
+                    self.displayImage(scenario: "happy")
+                } else if sad {
+                    self.displayImage(scenario: "sad")
+                } else if surprised{
+                    self.displayImage(scenario: "surprised")
+                } else {
+                    self.backgroundImage.image = nil
+                }
+            }
             
             print(json)
         } catch let error as NSError {
@@ -165,6 +200,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         capturedImage.image = pictureCapturer.lastCapturedImage
         self.currentProduct = id
         sendImageToAzure(imageToSend: self.capturedImage.image!)
+        
+        displayImage(scenario: nil)
     }
     
     
