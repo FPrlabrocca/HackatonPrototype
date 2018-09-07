@@ -49,15 +49,18 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     }
     
     func writeAnalytics() {
-        let downloadsDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-        let fileName = "MoveMatic5000_Analytics.html"
-        let downloadsDirectoryWithFile = downloadsDirectory.appendingPathComponent(fileName)
-        let fileData = self.analyticsHTML().data(using: .utf8)
+    
+        let desktopURL = try! FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+
+        let fileURL = desktopURL.appendingPathComponent("MoveMatic5000_Analytics").appendingPathExtension("html")
         
-        let created = FileManager.default.createFile(atPath: downloadsDirectoryWithFile.absoluteString,
-                                       contents: fileData,
-                                       attributes: nil)
-        print(created)
+        print("File Path: \(fileURL.path)")
+        
+        do {
+            try self.analyticsHTML().write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+        } catch let error as NSError {
+            print("Error: fileURL failed to write: \n\(error)" )
+        }
     }
     
     func sendImageToAzure(imageToSend : NSImage) {
@@ -67,7 +70,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         let defaultSession = URLSession(configuration: defaultSessionConfiguration)
         
         // Setup the request with URL
-        let url = URL(string: "https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect")!
+        let url = URL(string: "https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion")!
         var urlRequest = URLRequest(url: url)
         
         // Convert POST string parameters to data using UTF8 Encoding
@@ -92,11 +95,19 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     
     func parseResponse(data : Data) {
         do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]
             
-            // Logic to figure out what to do here
+            let faceAttributes =  (json[0] as! [String: Any])["faceAttributes"]  as! [String: Any]
+            let emotion = faceAttributes["emotion"] as! [String: Double]
             
-            trackInteraction(happy: false, sad: false, surprised: false)
+            let threashold = 0.5
+            
+            let happy = emotion["happiness"]! > threashold
+            let sad = emotion["sadness"]! > threashold
+            let neutral = emotion["neutral"]! > threashold
+            let surprised = emotion["surprise"]! > threashold
+            
+            trackInteraction(happy: happy, sad: sad, surprised: surprised)
             
             print(json)
         } catch let error as NSError {
