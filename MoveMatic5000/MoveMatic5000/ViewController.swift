@@ -18,21 +18,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
 
     
     // ========== Counters =========
-    // Product A
-    var productACountHappy = 0
-    var productACountSad = 0
-    var productACountSurprised = 0
-    
-    // Product B
-    var productBCountHappy = 0
-    var productBCountSad = 0
-    var productBCountSurprised = 0
-    
-    // Product C
-    var productCCountHappy = 0
-    var productCCountSad = 0
-    var productCCountSurprised = 0
-    
+    var trackingCounters:[EmotionCount] = [EmotionCount(), EmotionCount(), EmotionCount()]
+    var currentProduct = 0
     
     
     override func viewDidLoad() {
@@ -103,10 +90,25 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             
             // Logic to figure out what to do here
             
+            trackInteraction(happy: false, sad: false, surprised: false)
+            
             print(json)
         } catch let error as NSError {
             print(error)
         }
+    }
+    
+    func trackInteraction(happy : Bool, sad : Bool, surprised : Bool) {
+        if (happy) {
+            trackingCounters[self.currentProduct].CountHappy += 1
+        }
+        else if (sad) {
+            trackingCounters[self.currentProduct].CountSad += 1
+        }
+        else if (surprised) {
+            trackingCounters[self.currentProduct].CountSurprised += 1
+        }
+        writeAnalytics()
     }
     
     func base64ImageRepresentation(imageData : NSData) -> String {
@@ -120,7 +122,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         return ""
     }
     func analyticsHTML() -> String {
-        // todo
+        // TODO
         return """
         <html>
         <head>
@@ -150,9 +152,10 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     
     func deviceListener(_ : DeviceListener, didReceiveLiftEventFromDevice id: Int) {
         capturedImage.image = pictureCapturer.lastCapturedImage
-        
+        self.currentProduct = id
         sendImageToAzure(imageToSend: self.capturedImage.image!)
     }
+    
     
 }
 
