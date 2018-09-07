@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoveMatic5000/ViewController.swift"
-            timestampString = "558006883.1516809"
+            timestampString = "558006968.232668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -26,29 +26,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoveMatic5000/ViewController.swift"
-            timestampString = "558006883.151957"
+            timestampString = "558006968.232969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
             landmarkName = "sendImageToAzure(imageToSend:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoveMatic5000/ViewController.swift"
-            timestampString = "558006883.152123"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "playNotificationSound()"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MoveMatic5000.ViewController.sendImageToAzure(imageToSend: __ObjC.NSImage) -&gt; ()"
+                  moduleName = "MoveMatic5000"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robert/HackatonPrototype/MoveMatic5000/MoveMatic5000/ViewController.swift"
+                  timestampString = "558006968.673889"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "1141">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MoveMatic5000.ViewController.sendImageToAzure(imageToSend: __ObjC.NSImage) -&gt; ()"
+                  moduleName = "MoveMatic5000"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robert/HackatonPrototype/MoveMatic5000/MoveMatic5000/ViewController.swift"
+                  timestampString = "558006968.6759779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "46">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

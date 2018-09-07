@@ -39,6 +39,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     }
     
     func displayImage(product : String, scenario : String) {
+        playNotificationSound()
         let imageName = product + "_" + scenario
         let image : NSImage = NSImage(byReferencingFile: imageName)!
         backgroundImage.image = image
