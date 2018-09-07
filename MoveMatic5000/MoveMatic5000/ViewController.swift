@@ -42,6 +42,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         
         if currentProduct != 0 {
              playNotificationSound()
+        } else {
+            return
         }
         
         var imageName = "product\(currentProduct)"
@@ -50,24 +52,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             imageName.append(scenario!)
         }
         
-        let image : NSImage = NSImage(byReferencingFile: imageName)!
+        let image : NSImage = NSImage(named: NSImage.Name(imageName))!
         backgroundImage.image = image
-        
-        let color : CGColor
-    
-        
-        switch currentProduct {
-        case 1:
-            color =  CGColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)
-        case 2:
-            color =  CGColor(red: 0.0, green: 1.0, blue: 0, alpha: 1.0)
-        case 3:
-            color =  CGColor(red: 0.0, green: 0, blue: 1.0, alpha: 1.0)
-        default:
-            color = CGColor(red: 0.0, green: 0, blue: 0.0, alpha: 1.0)
-        }
-        
-        backgroundImage.layer?.backgroundColor = color
     }
     
     func playNotificationSound() {
@@ -142,7 +128,6 @@ class ViewController: NSViewController, DeviceListenerDelegate {
                 } else if surprised{
                     self.displayImage(scenario: "surprised")
                 } else {
-                    self.backgroundImage.image = nil
                 }
             }
             
