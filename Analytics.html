@@ -2,13 +2,14 @@
         <head>
         	<style>
         	body {
-        	background-color: lightblue;
+        	background-color: #eafffd;
         	}
 table {
     border-collapse:separate;
     border:solid lightblue 1px;
     border-radius:6px;
     -moz-border-radius:6px;
+    background-color: #fff;
 }
 
 td, th {
@@ -24,13 +25,48 @@ th {
 td:first-child, th:first-child {
      border-left: none;
 }
+
+.SadHeader {
+	text-align: center; background-color: #f7d9f5; font-weight: bold; color: #ff00ee; width: 100;
+}
+
+.SadContent {
+	text-align: center; font-size: 20px;font-weight: bold;
+}
+
+.HappyHeader {
+	text-align: center; background-color: #bff7b7; font-weight: bold; color: #24ef07; width: 100;
+}
+
+.HappyContent {
+	text-align: center; font-size: 20px;font-weight: bold;
+}
+
+.SurprisedHeader {
+	text-align: center; background-color: #fff8d1; font-weight: bold; color: #ffb200; width: 100;
+}
+
+.SurprisedContent {
+	text-align: center; font-size: 20px;font-weight: bold;
+}
+
+.NeutralHeader {
+	text-align: center; background-color: #f4f9f9; font-weight: bold; color: #208099; width: 100;
+}
+
+.NeutralContent {
+	text-align: center; font-size: 20px;font-weight: bold;
+}
+
 </style>
+<meta http-equiv="refresh" content="5;URL='Analytics.html'" /> 
         </head>
         <body style="font-family: Arial">
             <table>
                 <tr>
-                    <td><h2>Product Name A</h2>
-                    	x Pickups
+                    <td><h2>Gordon's Gin</h2>
+                    	<img src="images/Prod1_Gin.png" width="80" />
+                    	[A_PICKUPS] Pickups
                     </td>
                     <td>
                     
@@ -38,22 +74,28 @@ td:first-child, th:first-child {
                     		<tr>
                     			<td style="border: none">
                     				<table>
-                    					<tr><td style="background-color: #f7d9f5; font-weight: bold; color: #ff00ee">Sad</td></tr>
-                    					<tr><td>0%</td></tr>
+                    					<tr><td class="SadHeader">Sad</td></tr>
+                    					<tr><td class="SadContent"><br/>[A_SAD_PERCENT]%<br /><br /></td></tr>
                     				</table>
                     			</td>
                     			<td style="border: none">
                     				<table>
-                    					<tr><td style="background-color: #bff7b7; font-weight: bold; color: #24ef07">Happy</td></tr>
-                    					<tr><td>0%</td></tr>
+                    					<tr><td class="HappyHeader">Happy</td></tr>
+                    					<tr><td class="HappyContent"><br/>[A_HAPPY_PERCENT]%<br /><br /></td></tr>
                     				</table>
                     			</td>
                     			<td style="border: none">
                     				<table>
-                    					<tr><td style="background-color: #fff8d1; font-weight: bold; color: #ffdd00">Surprised</td></tr>
-                    					<tr><td>0%</td></tr>
+                    					<tr><td class="SurprisedHeader">Surprised</td></tr>
+                    					<tr><td class="SurprisedContent"><br/>[A_SURPRISED_PERCENT]%<br /><br /></td></tr>
                     				</table>
-                    			</td>                     			                    			
+                    			</td>            
+                    			<td style="border: none">
+                    				<table>
+                    					<tr><td class="NeutralHeader">Neutral</td></tr>
+                    					<tr><td class="NeutralContent"><br/>[A_NEUTRAL_PERCENT]%<br /><br /></td></tr>
+                    				</table>
+                    			</td>                       			         			                    			
                     		</tr>
                     	</table>
                     

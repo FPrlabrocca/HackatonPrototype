@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "sendImageToAzure(imageToSend:)"
+            landmarkName = "writeAnalytics()"
             landmarkType = "7">
             <Locations>
                <Location
