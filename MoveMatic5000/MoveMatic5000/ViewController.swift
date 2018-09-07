@@ -28,6 +28,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         startListeningForEvents()
         
         pictureCapturer.startCapture()
+        
+        playNotificationSound()
     }
     
     override var representedObject: Any? {
@@ -40,6 +42,10 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         let imageName = product + "_" + scenario
         let image : NSImage = NSImage(byReferencingFile: imageName)!
         backgroundImage.image = image
+    }
+    
+    func playNotificationSound() {
+        NSSound(named: NSSound.Name("ding"))?.play()
     }
     
     func writeAnalytics() {
