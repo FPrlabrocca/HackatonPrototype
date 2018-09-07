@@ -724,7 +724,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="backgroundImage" destination="Avp-Jh-srA" id="ef8-dK-4uN"/>
+                        <outlet property="backgroundImage" destination="bZN-3L-xwg" id="e6Z-2X-xAg"/>
                         <outlet property="capturedImage" destination="OD7-5O-ro3" id="XbE-Px-wxf"/>
                     </connections>
                 </viewController>
