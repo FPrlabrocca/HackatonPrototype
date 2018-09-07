@@ -17,6 +17,24 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     @IBOutlet weak var capturedImage: NSImageView!
 
     
+    // ========== Counters =========
+    // Product A
+    var productACountHappy = 0
+    var productACountSad = 0
+    var productACountSurprised = 0
+    
+    // Product B
+    var productBCountHappy = 0
+    var productBCountSad = 0
+    var productBCountSurprised = 0
+    
+    // Product C
+    var productCCountHappy = 0
+    var productCCountSad = 0
+    var productCCountSurprised = 0
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
