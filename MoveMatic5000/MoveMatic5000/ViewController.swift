@@ -43,15 +43,18 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     }
     
     func writeAnalytics() {
-        let downloadsDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-        let fileName = "MoveMatic5000_Analytics.html"
-        let downloadsDirectoryWithFile = downloadsDirectory.appendingPathComponent(fileName)
-        let fileData = self.analyticsHTML().data(using: .utf8)
+    
+        let desktopURL = try! FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+
+        let fileURL = desktopURL.appendingPathComponent("MoveMatic5000_Analytics").appendingPathExtension("html")
         
-        let created = FileManager.default.createFile(atPath: downloadsDirectoryWithFile.absoluteString,
-                                       contents: fileData,
-                                       attributes: nil)
-        print(created)
+        print("File Path: \(fileURL.path)")
+        
+        do {
+            try self.analyticsHTML().write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+        } catch let error as NSError {
+            print("Error: fileURL failed to write: \n\(error)" )
+        }
     }
     
     func sendImageToAzure(imageToSend : NSImage) {
