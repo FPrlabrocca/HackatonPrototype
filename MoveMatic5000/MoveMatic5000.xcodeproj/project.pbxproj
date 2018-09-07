@@ -26,6 +26,7 @@
 		8EC56F3521428D0300994508 /* product2_happy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EC56F2921428D0300994508 /* product2_happy.png */; };
 		B77495DC9FE914D96CBDC6CB /* Pods_MoveMatic5000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE995D3304DC4E476E61C70F /* Pods_MoveMatic5000.framework */; };
 		E13524B1214281CC006BD8E2 /* ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E13524B0214281CC006BD8E2 /* ding.mp3 */; };
+		E13524B4214297C3006BD8E2 /* Analytics.html in Resources */ = {isa = PBXBuildFile; fileRef = E13524B3214297C3006BD8E2 /* Analytics.html */; };
 		E1BA69B6214268C8008B8333 /* EmotionCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BA69B5214268C8008B8333 /* EmotionCount.swift */; };
 		E1C05DDC2141841E00A16220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C05DDB2141841E00A16220 /* AppDelegate.swift */; };
 		E1C05DDE2141841E00A16220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C05DDD2141841E00A16220 /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 		8EC56F2921428D0300994508 /* product2_happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product2_happy.png; sourceTree = "<group>"; };
 		CE995D3304DC4E476E61C70F /* Pods_MoveMatic5000.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoveMatic5000.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13524B0214281CC006BD8E2 /* ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ding.mp3; sourceTree = "<group>"; };
+		E13524B3214297C3006BD8E2 /* Analytics.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Analytics.html; path = ../../Analytics.html; sourceTree = "<group>"; };
 		E1BA69B5214268C8008B8333 /* EmotionCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionCount.swift; sourceTree = "<group>"; };
 		E1C05DD82141841E00A16220 /* MoveMatic5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoveMatic5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C05DDB2141841E00A16220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		E1C05DDA2141841E00A16220 /* MoveMatic5000 */ = {
 			isa = PBXGroup;
 			children = (
+				E13524B3214297C3006BD8E2 /* Analytics.html */,
 				8EC56F13214289EA00994508 /* images */,
 				E13524B0214281CC006BD8E2 /* ding.mp3 */,
 				E1C05DDB2141841E00A16220 /* AppDelegate.swift */,
@@ -223,6 +226,7 @@
 				8EC56F2E21428D0300994508 /* product1_surprise.png in Resources */,
 				E1C05DE32141841F00A16220 /* Main.storyboard in Resources */,
 				8EC56F3021428D0300994508 /* product3_neutral.png in Resources */,
+				E13524B4214297C3006BD8E2 /* Analytics.html in Resources */,
 				8EC56F1D21428B1800994508 /* product2.png in Resources */,
 				8EC56F3421428D0300994508 /* product3_surprise.png in Resources */,
 				8EC56F3121428D0300994508 /* product1_happy.png in Resources */,
