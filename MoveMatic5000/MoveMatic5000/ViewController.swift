@@ -20,9 +20,6 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        sendImageToAzure()
-        
         startListeningForEvents()
         
         pictureCapturer.startCapture()
@@ -52,7 +49,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         print(created)
     }
     
-    func sendImageToAzure() {
+    func sendImageToAzure(imageToSend : NSImage) {
         
         // Create the URLSession on the default configuration
         let defaultSessionConfiguration = URLSessionConfiguration.default
@@ -63,8 +60,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         var urlRequest = URLRequest(url: url)
         
         // Convert POST string parameters to data using UTF8 Encoding
+        //imageToSend.
         let postData = httpBody().data(using: .utf8)
-        //TODO //body = body.replacingOccurrences(of: "[_IMAGEDATA_]", with: self.base64ImageRepresentation(PASS IMAGE IN HERE))
         
         // Set the httpMethod and assign httpBody
         urlRequest.httpMethod = "POST"
@@ -136,6 +133,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     
     func deviceListener(_ : DeviceListener, didReceiveLiftEventFromDevice id: Int) {
         capturedImage.image = pictureCapturer.lastCapturedImage
+        
+        sendImageToAzure(imageToSend: self.capturedImage.image!)
     }
     
 }
