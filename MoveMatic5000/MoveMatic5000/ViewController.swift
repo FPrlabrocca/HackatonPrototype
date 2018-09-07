@@ -179,24 +179,44 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         return ""
     }
     func analyticsHTML() -> String {
-        // TODO
-        return """
-        <html>
-        <head>
-        </head>
-        <body>
-            <table>
-                <tr>
-                    <td><h1>Hendrick's Gin</h1></td>
-                    <td></td>
-                </tr>
-                <tr>
         
-                </tr>
-            </table>
-        </body>
-        </html>
-"""
+        if let filepath = Bundle.main.path(forResource: "Analytics", ofType: "html") {
+            do {
+                var contents = try String(contentsOfFile: filepath)
+                print(contents)
+                
+                // Replace contents here
+                let emotionCountA = trackingCounters[0]
+                let emotionCountB = trackingCounters[1]
+                let emotionCountC = trackingCounters[2]
+                
+                contents = contents.replacingOccurrences(of: "[A_PICKUPS]", with: String(emotionCountA.total()))
+                contents = contents.replacingOccurrences(of: "[A_SAD_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountSad)))
+                contents = contents.replacingOccurrences(of: "[A_HAPPY_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountHappy)))
+                contents = contents.replacingOccurrences(of: "[A_SURPRISED_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountSurprised)))
+                contents = contents.replacingOccurrences(of: "[A_NEUTRAL_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountNeutral)))
+                
+                contents = contents.replacingOccurrences(of: "[B_PICKUPS]", with: String(emotionCountB.total()))
+                contents = contents.replacingOccurrences(of: "[B_SAD_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountSad)))
+                contents = contents.replacingOccurrences(of: "[B_HAPPY_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountHappy)))
+                contents = contents.replacingOccurrences(of: "[B_SURPRISED_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountSurprised)))
+                contents = contents.replacingOccurrences(of: "[B_NEUTRAL_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountNeutral)))
+                
+                contents = contents.replacingOccurrences(of: "[C_PICKUPS]", with: String(emotionCountC.total()))
+                contents = contents.replacingOccurrences(of: "[C_SAD_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountSad)))
+                contents = contents.replacingOccurrences(of: "[C_HAPPY_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountHappy)))
+                contents = contents.replacingOccurrences(of: "[C_SURPRISED_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountSurprised)))
+                contents = contents.replacingOccurrences(of: "[C_NEUTRAL_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountNeutral)))
+                
+                return contents
+            } catch {
+                print("fail")
+            }
+        } else {
+            print("fail")
+        }
+        
+        return ""
     }
     
     func startListeningForEvents() {
