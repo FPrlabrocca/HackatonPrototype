@@ -40,6 +40,17 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         backgroundImage.image = image
     }
     
+    func writeAnalytics() {
+        let downloadsDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        let fileName = "MoveMatic5000_Analytics.html"
+        let downloadsDirectoryWithFile = downloadsDirectory.appendingPathComponent(fileName)
+        let fileData = self.analyticsHTML().data(using: .utf8)
+        
+        let created = FileManager.default.createFile(atPath: downloadsDirectoryWithFile.absoluteString,
+                                       contents: fileData,
+                                       attributes: nil)
+        print(created)
+    }
     
     func sendImageToAzure() {
         
@@ -76,6 +87,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
             
+            // Logic to figure out what to do here
+            
             print(json)
         } catch let error as NSError {
             print(error)
@@ -91,6 +104,27 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     
     func httpBody() -> String {
         return ""
+    }
+    func analyticsHTML() -> String {
+        // todo
+        return """
+        <html>
+        <head>
+        </head>
+        <body>
+            <table>
+                <tr>
+                    <td><b>Product A</b></td>
+                    <td><b>Product B</b></td>
+                    <td><b>Product C</b></td>
+                </tr>
+                <tr>
+        
+                </tr>
+            </table>
+        </body>
+        </html>
+"""
     }
     
     func startListeningForEvents() {
