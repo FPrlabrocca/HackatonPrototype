@@ -148,9 +148,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         <body>
             <table>
                 <tr>
-                    <td><b>Product A</b></td>
-                    <td><b>Product B</b></td>
-                    <td><b>Product C</b></td>
+                    <td><h1>Hendrick's Gin</h1></td>
+                    <td></td>
                 </tr>
                 <tr>
         
