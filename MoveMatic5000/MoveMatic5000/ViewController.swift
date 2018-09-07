@@ -145,14 +145,17 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     }
     
     func trackInteraction(happy : Bool, sad : Bool, surprised : Bool) {
+        
+        guard currentProduct > 0 else {return}
+        
         if (happy) {
-            trackingCounters[self.currentProduct].CountHappy += 1
+            trackingCounters[self.currentProduct-1].CountHappy += 1
         }
         if (sad) {
-            trackingCounters[self.currentProduct].CountSad += 1
+            trackingCounters[self.currentProduct-1].CountSad += 1
         }
         if (surprised) {
-            trackingCounters[self.currentProduct].CountSurprised += 1
+            trackingCounters[self.currentProduct-1].CountSurprised += 1
         }
         writeAnalytics()
     }
