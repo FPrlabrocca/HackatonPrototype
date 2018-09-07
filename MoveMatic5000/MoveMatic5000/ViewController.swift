@@ -52,8 +52,9 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             imageName.append("_\(scenario!)")
         }
         
-        let image : NSImage = NSImage(named: NSImage.Name(imageName))!
-        backgroundImage.image = image
+        if let image = NSImage(named: NSImage.Name(imageName)) {
+            backgroundImage.image = image
+        }
     }
     
     func playNotificationSound() {
@@ -126,9 +127,9 @@ class ViewController: NSViewController, DeviceListenerDelegate {
                 } else if sad {
                     self.displayImage(scenario: "sad")
                 } else if surprised{
-                    self.displayImage(scenario: "surprised")
+                    self.displayImage(scenario: "surprise")
                 } else if neutral{
-                    self.displayImage(scenario: "neutral")
+                    self.displayImage(scenario: "happy")
                 } else {
                 }
             }
