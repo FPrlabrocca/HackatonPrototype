@@ -30,6 +30,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         pictureCapturer.startCapture()
         
         displayImage(scenario: nil)
+        
+        writeAnalytics()
     }
     
     override var representedObject: Any? {
@@ -119,7 +121,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             let neutral = emotion["neutral"]! > threashold
             let surprised = emotion["surprise"]! > threashold
             
-            trackInteraction(happy: happy, sad: sad, surprised: surprised, neutral: neutral)
+            trackInteraction(happy: happy, sad: sad, surprised: surprised)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if happy {
@@ -140,7 +142,7 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         }
     }
     
-    func trackInteraction(happy : Bool, sad : Bool, surprised : Bool, neutral : Bool) {
+    func trackInteraction(happy : Bool, sad : Bool, surprised : Bool) {
         if (happy) {
             trackingCounters[self.currentProduct].CountHappy += 1
         }
@@ -148,9 +150,6 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             trackingCounters[self.currentProduct].CountSad += 1
         }
         if (surprised) {
-            trackingCounters[self.currentProduct].CountSurprised += 1
-        }
-        if (neutral) {
             trackingCounters[self.currentProduct].CountSurprised += 1
         }
         writeAnalytics()
@@ -182,19 +181,16 @@ class ViewController: NSViewController, DeviceListenerDelegate {
                 contents = contents.replacingOccurrences(of: "[A_SAD_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountSad)))
                 contents = contents.replacingOccurrences(of: "[A_HAPPY_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountHappy)))
                 contents = contents.replacingOccurrences(of: "[A_SURPRISED_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountSurprised)))
-                contents = contents.replacingOccurrences(of: "[A_NEUTRAL_PERCENT]", with: String(emotionCountA.percent(EmotionCount: emotionCountA.CountNeutral)))
                 
                 contents = contents.replacingOccurrences(of: "[B_PICKUPS]", with: String(emotionCountB.total()))
                 contents = contents.replacingOccurrences(of: "[B_SAD_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountSad)))
                 contents = contents.replacingOccurrences(of: "[B_HAPPY_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountHappy)))
                 contents = contents.replacingOccurrences(of: "[B_SURPRISED_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountSurprised)))
-                contents = contents.replacingOccurrences(of: "[B_NEUTRAL_PERCENT]", with: String(emotionCountB.percent(EmotionCount: emotionCountB.CountNeutral)))
                 
                 contents = contents.replacingOccurrences(of: "[C_PICKUPS]", with: String(emotionCountC.total()))
                 contents = contents.replacingOccurrences(of: "[C_SAD_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountSad)))
                 contents = contents.replacingOccurrences(of: "[C_HAPPY_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountHappy)))
                 contents = contents.replacingOccurrences(of: "[C_SURPRISED_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountSurprised)))
-                contents = contents.replacingOccurrences(of: "[C_NEUTRAL_PERCENT]", with: String(emotionCountC.percent(EmotionCount: emotionCountC.CountNeutral)))
                 
                 return contents
             } catch {

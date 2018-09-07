@@ -12,14 +12,17 @@ class EmotionCount: NSObject {
     var CountHappy = 0
     var CountSad = 0
     var CountSurprised = 0
-    var CountNeutral = 0
     
     func percent(EmotionCount : Int) -> Int {
-        let percent : Int = (EmotionCount / (CountHappy + CountSad + CountSurprised + CountNeutral)) * 100
-        return percent
+        var percent : Double = 0
+        if (total() > 0 && EmotionCount > 0) {
+            percent = (Double(EmotionCount) / Double(total())) * 100
+        }
+        
+        return Int(percent)
     }
     
     func total() -> Int {
-        return CountHappy + CountSad + CountSurprised + CountNeutral
+        return CountHappy + CountSad + CountSurprised
     }
 }
