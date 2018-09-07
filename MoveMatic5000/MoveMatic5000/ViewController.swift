@@ -63,7 +63,6 @@ class ViewController: NSViewController, DeviceListenerDelegate {
     func writeAnalytics() {
     
         let desktopURL = try! FileManager.default.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-
         let fileURL = desktopURL.appendingPathComponent("MoveMatic5000_Analytics").appendingPathExtension("html")
         
         print("File Path: \(fileURL.path)")
@@ -116,10 +115,10 @@ class ViewController: NSViewController, DeviceListenerDelegate {
             
             let happy = emotion["happiness"]! > threashold
             let sad = emotion["sadness"]! > threashold
-            //let neutral = emotion["neutral"]! > threashold
+            let neutral = emotion["neutral"]! > threashold
             let surprised = emotion["surprise"]! > threashold
             
-            trackInteraction(happy: happy, sad: sad, surprised: surprised)
+            trackInteraction(happy: happy, sad: sad, surprised: surprised, neutral: neutral)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 if happy {
@@ -138,14 +137,17 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         }
     }
     
-    func trackInteraction(happy : Bool, sad : Bool, surprised : Bool) {
+    func trackInteraction(happy : Bool, sad : Bool, surprised : Bool, neutral : Bool) {
         if (happy) {
             trackingCounters[self.currentProduct].CountHappy += 1
         }
-        else if (sad) {
+        if (sad) {
             trackingCounters[self.currentProduct].CountSad += 1
         }
-        else if (surprised) {
+        if (surprised) {
+            trackingCounters[self.currentProduct].CountSurprised += 1
+        }
+        if (neutral) {
             trackingCounters[self.currentProduct].CountSurprised += 1
         }
         writeAnalytics()
@@ -170,9 +172,8 @@ class ViewController: NSViewController, DeviceListenerDelegate {
         <body>
             <table>
                 <tr>
-                    <td><b>Product A</b></td>
-                    <td><b>Product B</b></td>
-                    <td><b>Product C</b></td>
+                    <td><h1>Hendrick's Gin</h1></td>
+                    <td></td>
                 </tr>
                 <tr>
         
